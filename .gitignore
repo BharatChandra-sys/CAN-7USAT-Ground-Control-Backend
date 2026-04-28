@@ -1,93 +1,88 @@
-# Python
+# ── Python ──
 __pycache__/
 *.py[cod]
-*$py.class
 *.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
 *.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.Python
 MANIFEST
 
-# Virtual Environment
+# ── Virtual Environment ──
 venv/
 env/
 ENV/
-env.bak/
-venv.bak/
+.venv/
 
-# IDEs
+# ── Node / Frontend ──
+node_modules/
+frontend/dist/
+frontend/build/
+.vite/
+.cache/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Environment / Secrets ──
+.env
+.env.local
+.env.*.local
+backend/.env
+
+# ── IDEs ──
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
+
+# ── OS ──
 .DS_Store
+Thumbs.db
 
-# Environment variables
-.env
-.env.local
-.env.*.local
-
-# Testing
+# ── Testing / Coverage ──
 .pytest_cache/
 .coverage
 htmlcov/
 .tox/
 .hypothesis/
 
-# Logs
-*.log
-logs/
-
-# Database
+# ── Database ──
 *.db
 *.sqlite
 *.sqlite3
 
-# Documentation (keep only essential)
+# ── Temp / Build artifacts ──
+*.tmp
+*.bak
+
+# ── Project-specific large files ──
+rckt_kushinagar.csv
+rckt_inspace.ork
+*.pdf
+
+# ── Screenshots / raw images (keep docs/images) ──
+Screenshot*.png
+Screenshot*.jpg
+
+# ── Extra markdown docs (not needed in repo) ──
 SETUP_STATUS.md
 BACKEND_COMPLETE.md
 SYSTEM_UPGRADES.md
 FINAL_STATUS.md
 OPTIMAL_STACK_ANALYSIS.md
 GETTING_STARTED.md
+PROJECT_OVERVIEW.md
+COMPONENT_BREAKDOWN.md
+UI_SPECIFICATION.md
 
-# Temporary files
-*.tmp
-*.bak
-*.swp
-.cache/
-
-# OS
-Thumbs.db
-.DS_Store
-
-# Project specific
-rckt_kushinagar.csv
-rckt_inspace.ork
-*.pdf
-*.png
-*.jpg
-*.jpeg
-*.gif
-
-# Keep these
+# ── Keep these ──
 !docs/images/*.png
 !docs/images/*.jpg
 !README.md
 !LICENSE
+!backend/.env.example

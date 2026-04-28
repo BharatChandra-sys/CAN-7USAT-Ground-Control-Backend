@@ -1,0 +1,241 @@
+/* CanSat Ground Control - Exact Stitch Design, Single Screen */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+.gcs {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #c8c8c8;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* HEADER */
+.gcs-header {
+  height: 46px;
+  min-height: 46px;
+  background: #e0e0e0;
+  border-bottom: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  flex-shrink: 0;
+}
+
+.gcs-header-left { display: flex; align-items: center; gap: 8px; }
+.gcs-header-left h1 { font-size: 1rem; font-weight: bold; line-height: 1.1; }
+.gcs-header-left p  { font-size: 0.62rem; color: #555; }
+.gcs-header-right   { display: flex; gap: 3px; }
+
+.hbadge {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  border: 2px solid #000; background: #fff;
+  padding: 2px 8px; min-width: 68px;
+}
+.hbadge.ok   { background: #90ee90; }
+.hbadge.fail { background: #ffb0b0; }
+.hbadge-lbl  { font-size: 0.56rem; font-weight: bold; text-transform: uppercase; }
+.hbadge-val  { font-size: 0.72rem; font-weight: bold; }
+
+/* BODY GRID */
+.gcs-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 152px 1fr 242px;
+  gap: 2px;
+  background: #000;
+  padding: 2px;
+  /* fill exactly the remaining height */
+  height: calc(100vh - 46px);
+  overflow: hidden;
+}
+
+.col-left, .col-center, .col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+  background: #c8c8c8;
+}
+
+/* PANEL */
+.panel {
+  background: #e8e8e8;
+  border: 2px solid #000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.panel-hdr {
+  background: #c0c0c0;
+  border-bottom: 2px solid #000;
+  padding: 3px 7px;
+  font-size: 0.67rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.panel-body {
+  flex: 1;
+  padding: 5px;
+  overflow: hidden;
+}
+
+/* ── LEFT COLUMN ── */
+
+/* Flight State: fixed height */
+.p-flight { height: 188px; }
+
+.fs-box {
+  border: 2px solid #000;
+  background: #fff;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #bbb;
+  padding: 8px 4px;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.fs-list { list-style: none; padding: 0; margin: 0; }
+.fs-list li {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 0.6rem; padding: 1px 0; opacity: 0.35;
+}
+.fs-list li.on { opacity: 1; font-weight: bold; }
+.fs-dot { width: 7px; height: 7px; border-radius: 50%; background: #aaa; flex-shrink: 0; }
+.fs-list li.on .fs-dot { background: #000; }
+
+/* Vehicle Status */
+.p-vstatus { height: 96px; }
+
+.vstatus-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px; background: #000; height: 100%;
+}
+.vs-cell {
+  background: #fff;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; padding: 2px;
+}
+.vs-lbl { font-size: 0.5rem; font-weight: bold; text-transform: uppercase; }
+.vs-val { font-size: 0.68rem; font-weight: bold; }
+.vs-val.safe    { color: #007700; }
+.vs-val.armed   { color: #cc0000; }
+
+/* Command */
+.p-cmd { height: 118px; }
+
+.cmd-btns { display: flex; flex-direction: column; gap: 2px; }
+.cbtn {
+  width: 100%; padding: 5px;
+  font-size: 0.58rem; font-weight: bold; text-transform: uppercase;
+  border: 2px solid #000; background: #d8d8d8; cursor: pointer;
+}
+.cbtn:hover:not(:disabled) { background: #b8b8b8; }
+.cbtn:disabled { opacity: 0.45; cursor: not-allowed; }
+.cbtn.arm    { background: #ffb0b0; }
+.cbtn.disarm { background: #b0ffb0; }
+
+/* GPS */
+.p-gps { flex: 1; min-height: 0; }
+
+.gps-row {
+  display: flex; justify-content: space-between; align-items: center;
+  border: 2px solid #000; background: #fff;
+  padding: 4px 5px; margin-bottom: 3px;
+}
+.gps-lbl { font-size: 0.62rem; font-weight: bold; }
+.gps-val { font-size: 0.62rem; font-family: 'Courier New', monospace; }
+
+/* ── CENTER COLUMN ── */
+
+/* Primary Telemetry */
+.p-telem { height: 84px; }
+
+.telem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px; background: #000; height: 100%;
+}
+.tc {
+  background: #fff;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; padding: 3px;
+}
+.tc-lbl { font-size: 0.56rem; font-weight: bold; margin-bottom: 2px; }
+.tc-val {
+  font-size: 1.15rem; font-weight: bold;
+  color: #999; font-family: 'Courier New', monospace; line-height: 1;
+}
+
+/* Charts - flex:1 so they share remaining space equally */
+.p-chart { flex: 1; min-height: 0; }
+
+.chart-wrap {
+  background: #fff;
+  height: 100%;
+  padding: 3px;
+  overflow: hidden;
+}
+
+/* ── RIGHT COLUMN ── */
+
+/* Orientation */
+.p-orient { height: 248px; }
+
+.rocket-wrap {
+  background: #001818;
+  height: 100%;
+  display: flex; align-items: center; justify-content: center;
+}
+.rocket-svg { width: 100%; height: 100%; }
+
+/* Quaternion */
+.p-quat { height: 64px; }
+
+.quat-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 2px; background: #000; height: 100%;
+}
+.qc {
+  background: #fff;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.qc-lbl { font-size: 0.58rem; font-weight: bold; }
+.qc-val { font-size: 0.62rem; font-family: 'Courier New', monospace; font-weight: bold; }
+
+/* Diagnostics */
+.p-diag { flex: 1; min-height: 0; }
+
+.diag-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 3px; }
+.diag-list li {
+  display: flex; align-items: center; gap: 5px;
+  border: 2px solid #000; background: #fff;
+  padding: 4px 5px; font-size: 0.6rem;
+}
+.diag-list li strong { margin-left: auto; }
+.d-dot { width: 7px; height: 7px; border-radius: 50%; background: #000; flex-shrink: 0; }
+
+/* uPlot overrides */
+.u-over, .u-under { background: #fff !important; }
+.u-axis  { color: #444 !important; }
+.u-grid  { stroke: #ddd !important; }
+.u-legend { display: none !important; }
+.u-wrap  { overflow: hidden !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: #ccc; }
+::-webkit-scrollbar-thumb { background: #888; border-radius: 2px; }
