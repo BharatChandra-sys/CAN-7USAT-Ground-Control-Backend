@@ -1,10 +1,5 @@
-/**
- * Simplified 3D Rocket Visualization - Optimized for Performance
- */
-
-import { useRef, useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
-import * as THREE from 'three';
+﻿import { Canvas } from '@react-three/fiber';
+import { Quaternion, Euler } from 'three';
 
 interface Rocket3DProps {
   quat_w: number;
@@ -13,48 +8,58 @@ interface Rocket3DProps {
   quat_z: number;
 }
 
-// Simple rocket mesh component
-function RocketMesh({ quat_w, quat_x, quat_y, quat_z }: Rocket3DProps) {
-  const rocketRef = useRef<THREE.Group>(null);
-  
-  useEffect(() => {
-    if (rocketRef.current) {
-      // Apply quaternion rotation
-      const quaternion = new THREE.Quaternion(quat_x, quat_y, quat_z, quat_w);
-      rocketRef.current.setRotationFromQuaternion(quaternion);
-    }
-  }, [quat_w, quat_x, quat_y, quat_z]);
-  
+const quaternionToEuler = (w: number, x: number, y: number, z: number) => {
+  const sinrCosp = 2 * (w * x + y * z);
+  const cosrCosp = 1 - 2 * (x * x + y * y);
+  const roll = Math.atan2(sinrCosp, cosrCosp);
+
+  const sinp = 2 * (w * y - z * x);
+  const pitch = Math.abs(sinp) >= 1 ? Math.sign(sinp) * Math.PI / 2 : Math.asin(sinp);
+
+  const sinyCosp = 2 * (w * z + x * y);
+  const cosyCosp = 1 - 2 * (y * y + z * z);
+  const yaw = Math.atan2(sinyCosp, cosyCosp);
+
+  return { roll, pitch, yaw };
+};
+
+const RocketModel = ({ quat_w, quat_x, quat_y, quat_z }: Rocket3DProps) => {
+  const q = new Quaternion(quat_x, quat_y, quat_z, quat_w).normalize();
+  const e = quaternionToEuler(q.w, q.x, q.y, q.z);
+
+  // Visual policy: show pitch/roll attitude only.
+  // Yaw is a heading value and remains numeric in the attitude matrix.
+  const visualRotation = new Euler(e.pitch, 0, -e.roll, 'XYZ');
+
   return (
-    <group ref={rocketRef}>
-      {/* Rocket body */}
-      <mesh position={[0, 0, 0]}>
-        <cylinderGeometry args={[0.2, 0.2, 3, 8]} />
-        <meshBasicMaterial color="#888888" />
+    <group rotation={visualRotation}>
+      <mesh rotation={[0, 0, Math.PI / 2]}>
+        <cylinderGeometry args={[0.055, 0.095, 1.35, 32]} />
+        <meshStandardMaterial color="#d8d8d8" roughness={0.55} metalness={0.1} />
       </mesh>
-      
-      {/* Nose cone */}
-      <mesh position={[0, 2, 0]}>
-        <coneGeometry args={[0.2, 1, 8]} />
-        <meshBasicMaterial color="#666666" />
+
+      <mesh position={[0.78, 0, 0]} rotation={[0, 0, -Math.PI / 2]}>
+        <coneGeometry args={[0.105, 0.25, 32]} />
+        <meshStandardMaterial color="#ffffff" roughness={0.48} metalness={0.1} />
       </mesh>
-      
-      {/* Direction indicator */}
-      <mesh position={[0, 2.8, 0]}>
-        <sphereGeometry args={[0.1, 8, 8]} />
-        <meshBasicMaterial color="#000000" />
+
+      <mesh position={[-0.72, 0.09, 0]}>
+        <boxGeometry args={[0.18, 0.035, 0.16]} />
+        <meshStandardMaterial color="#8f8f8f" />
+      </mesh>
+
+      <mesh position={[-0.72, -0.09, 0]}>
+        <boxGeometry args={[0.18, 0.035, 0.16]} />
+        <meshStandardMaterial color="#8f8f8f" />
       </mesh>
     </group>
   );
-}
-
-export const Rocket3D: React.FC<Rocket3DProps> = (props) => {
-  return (
-    <div style={{ width: '100%', height: '100%', background: '#f8f8f8' }}>
-      <Canvas camera={{ position: [5, 3, 5], fov: 50 }}>
-        <ambientLight intensity={0.8} />
-        <RocketMesh {...props} />
-      </Canvas>
-    </div>
-  );
 };
+
+export const Rocket3D = (props: Rocket3DProps) => (
+  <Canvas camera={{ position: [0, 0, 3.25], fov: 38 }}>
+    <ambientLight intensity={1.7} />
+    <directionalLight position={[3, 2, 4]} intensity={1.15} />
+    <RocketModel {...props} />
+  </Canvas>
+);

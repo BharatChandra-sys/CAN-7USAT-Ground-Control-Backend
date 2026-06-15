@@ -21,6 +21,10 @@ const basePacket = () => ({
   gps_lon: 83.887,
   checksum_xor: 123,
   received_at: new Date().toISOString(),
+  temperature_c: 25.0,
+  pressure_pa: 101325.0,
+  battery_pct: 100.0,
+  signal_dbm: -70.0,
 });
 
 describe('telemetryStore', () => {

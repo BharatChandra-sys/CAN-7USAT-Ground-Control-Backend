@@ -1,0 +1,3365 @@
+﻿:root {
+  --aero-bg: #050505;
+  --aero-panel: #101010;
+  --aero-panel-2: #171717;
+  --aero-border: #2a2a2a;
+  --aero-border-strong: #3a3a3a;
+  --aero-text: #f4f4f4;
+  --aero-muted: #9a9a9a;
+  --aero-dim: #666666;
+  --aero-warn: #ffcc66;
+  --aero-danger: #ff8a8a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--aero-bg);
+}
+
+.aero-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 236px minmax(0, 1fr);
+  background:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+    #050505;
+  background-size: 28px 28px;
+  color: var(--aero-text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.aero-sidebar {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  border-right: 1px solid var(--aero-border);
+  background: rgba(8, 8, 8, 0.96);
+}
+
+.aero-logo {
+  padding: 22px 18px;
+  border-bottom: 1px solid var(--aero-border);
+}
+
+.aero-logo span {
+  display: block;
+  color: var(--aero-muted);
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+}
+
+.aero-logo strong {
+  display: block;
+  margin-top: 5px;
+  color: var(--aero-text);
+  font-size: 1.34rem;
+  letter-spacing: 0.08em;
+}
+
+.aero-nav {
+  padding: 14px 10px;
+  display: grid;
+  align-content: start;
+  gap: 6px;
+}
+
+.aero-nav button {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--aero-muted);
+  text-align: left;
+  cursor: pointer;
+}
+
+.aero-nav button span {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 26px;
+  border: 1px solid var(--aero-border);
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.68rem;
+}
+
+.aero-nav button strong {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.aero-nav button:hover,
+.aero-nav button.active {
+  border-color: var(--aero-border-strong);
+  background: #151515;
+  color: #fff;
+}
+
+.aero-nav button.active span {
+  background: #f5f5f5;
+  color: #050505;
+  border-color: #f5f5f5;
+}
+
+.aero-sidebar-footer {
+  padding: 16px 18px;
+  border-top: 1px solid var(--aero-border);
+}
+
+.aero-sidebar-footer span {
+  display: block;
+  color: var(--aero-dim);
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+}
+
+.aero-sidebar-footer strong {
+  display: block;
+  margin-top: 5px;
+  color: #fff;
+  font-size: 0.86rem;
+}
+
+.aero-workspace {
+  min-width: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 66px minmax(0, 1fr);
+}
+
+.aero-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--aero-border);
+  background: rgba(7, 7, 7, 0.94);
+}
+
+.aero-topbar span {
+  color: var(--aero-muted);
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+}
+
+.aero-topbar h1 {
+  margin: 3px 0 0;
+  color: var(--aero-text);
+  font-size: 1.08rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.aero-top-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aero-top-status div {
+  min-width: 96px;
+  padding: 7px 9px;
+  border: 1px solid var(--aero-border);
+  background: #111;
+}
+
+.aero-top-status div.ok {
+  border-color: #d8d8d8;
+}
+
+.aero-top-status div.bad {
+  border-color: var(--aero-danger);
+}
+
+.aero-top-status span {
+  display: block;
+  color: var(--aero-dim);
+  font-size: 0.58rem;
+}
+
+.aero-top-status strong {
+  display: block;
+  margin-top: 3px;
+  color: #fff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.76rem;
+}
+
+.aero-content {
+  min-width: 0;
+  min-height: 0;
+  position: relative;
+  padding: 12px;
+  overflow: hidden;
+}
+
+.aero-page-host {
+  height: 100%;
+  min-height: 0;
+}
+
+.aero-page-host.hidden {
+  display: none;
+}
+
+.aero-page-host .mission-shell {
+  height: 100% !important;
+  padding: 0 !important;
+  background: transparent !important;
+  grid-template-rows: minmax(0, 1fr) 104px !important;
+}
+
+.aero-page-host .mission-topbar {
+  display: none !important;
+}
+
+.aero-page {
+  height: 100%;
+  min-height: 0;
+  overflow: auto;
+  padding: 4px;
+}
+
+.aero-page-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--aero-border);
+  background: rgba(16, 16, 16, 0.92);
+}
+
+.aero-page-title span {
+  color: var(--aero-muted);
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+}
+
+.aero-page-title h2 {
+  margin: 5px 0 0;
+  color: #fff;
+  font-size: 1.4rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.aero-page-stamp {
+  color: #fff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.9rem;
+  border: 1px solid var(--aero-border-strong);
+  padding: 8px 10px;
+  background: #0b0b0b;
+}
+
+.aero-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.aero-readout {
+  min-height: 92px;
+  padding: 12px;
+  border: 1px solid var(--aero-border);
+  background: #101010;
+}
+
+.aero-readout-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.aero-readout-head span {
+  color: var(--aero-muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.aero-readout strong {
+  display: block;
+  margin-top: 18px;
+  color: #fff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+.aero-readout em {
+  margin-left: 6px;
+  color: var(--aero-muted);
+  font-size: 0.72rem;
+  font-style: normal;
+}
+
+.aero-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 58px;
+  padding: 3px 6px;
+  border: 1px solid var(--aero-border-strong);
+  color: #fff;
+  background: #0b0b0b;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+}
+
+.aero-tag.derived {
+  color: var(--aero-warn);
+  border-color: rgba(255, 204, 102, 0.45);
+}
+
+.aero-tag.estimated,
+.aero-tag.simulated {
+  color: #cfcfcf;
+  border-color: #555;
+}
+
+.aero-telemetry-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  grid-auto-rows: minmax(220px, auto);
+  gap: 10px;
+}
+
+.aero-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.aero-panel {
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid var(--aero-border);
+  background: rgba(16, 16, 16, 0.94);
+}
+
+.aero-panel.span-2 {
+  grid-column: span 2;
+}
+
+.aero-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 40px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--aero-border);
+  background: #151515;
+}
+
+.aero-panel-head span {
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.aero-panel-head em {
+  color: var(--aero-dim);
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.62rem;
+  font-style: normal;
+}
+
+.aero-chart-slot {
+  height: 270px;
+  padding: 10px;
+}
+
+.aero-chart-slot.small {
+  height: 210px;
+}
+
+.aero-chart-slot.analysis {
+  height: 320px;
+}
+
+.aero-table {
+  display: grid;
+}
+
+.aero-table div {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--aero-border);
+}
+
+.aero-table div:last-child {
+  border-bottom: 0;
+}
+
+.aero-table span {
+  color: var(--aero-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.aero-table strong {
+  color: #fff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.78rem;
+}
+
+.aero-log-table {
+  display: grid;
+  padding: 8px;
+}
+
+.aero-log-table.tall {
+  max-height: 450px;
+  overflow: auto;
+}
+
+.aero-log-row {
+  display: grid;
+  grid-template-columns: 120px 100px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 36px;
+  padding: 7px 8px;
+  border-bottom: 1px solid var(--aero-border);
+  color: var(--aero-muted);
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.74rem;
+}
+
+.aero-log-row strong {
+  color: #fff;
+}
+
+.aero-log-row em {
+  color: #cfcfcf;
+  font-style: normal;
+}
+
+.aero-log-row.warning em {
+  color: var(--aero-warn);
+}
+
+.aero-log-row.danger em {
+  color: var(--aero-danger);
+}
+
+.aero-state-strip {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  padding: 12px;
+}
+
+.aero-state-strip div {
+  display: grid;
+  place-items: center;
+  min-height: 58px;
+  border: 1px solid var(--aero-border);
+  background: #0b0b0b;
+  color: #fff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 1180px) {
+  .aero-shell {
+    grid-template-columns: 210px minmax(0, 1fr);
+  }
+
+  .aero-matrix-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .aero-telemetry-layout,
+  .aero-two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .aero-panel.span-2 {
+    grid-column: auto;
+  }
+}
+
+/* MILESTONE 5.1 AEROSPACE CLEANUP OVERRIDES */
+
+/* Keep Mission Control contained inside the aerospace shell */
+.aero-page-host .mission-shell {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  grid-template-rows: minmax(0, 1fr) 96px !important;
+  gap: 8px !important;
+}
+
+.aero-page-host .mission-main {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  display: grid !important;
+  grid-template-columns: 292px minmax(0, 1fr) 292px !important;
+  gap: 8px !important;
+}
+
+.aero-page-host .mission-column,
+.aero-page-host .center-column,
+.aero-page-host .right-column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+.aero-page-host .mission-bottom {
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Monochrome panel conversion */
+.aero-page-host .panel,
+.aero-page-host .bottom-panel,
+.aero-page-host .telemetry-card,
+.aero-page-host .metric-pill,
+.aero-page-host .status-cell,
+.aero-page-host .quat-grid div,
+.aero-page-host .gps-lines div,
+.aero-page-host .diagnostic-list div {
+  background: #101010 !important;
+  border-color: #2a2a2a !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.aero-page-host .panel-header,
+.aero-page-host .bottom-header {
+  background: #151515 !important;
+  border-color: #2a2a2a !important;
+  color: #f5f5f5 !important;
+  border-radius: 0 !important;
+}
+
+.aero-page-host .panel-header,
+.aero-page-host .bottom-header h3,
+.aero-page-host .telemetry-card span,
+.aero-page-host .status-cell span,
+.aero-page-host .quat-grid span,
+.aero-page-host .gps-lines span,
+.aero-page-host .diagnostic-list span {
+  color: #9a9a9a !important;
+}
+
+.aero-page-host .telemetry-card strong,
+.aero-page-host .status-cell strong,
+.aero-page-host .quat-grid strong,
+.aero-page-host .gps-lines strong,
+.aero-page-host .diagnostic-list strong,
+.aero-page-host .current-state {
+  color: #f5f5f5 !important;
+}
+
+.aero-page-host .good-text,
+.aero-page-host .warn-text,
+.aero-page-host .danger-text {
+  color: #f5f5f5 !important;
+}
+
+/* Flight state list cleanup */
+.aero-page-host .current-state {
+  background: #050505 !important;
+  border: 1px solid #3a3a3a !important;
+  border-radius: 0 !important;
+  font-family: "JetBrains Mono", Consolas, monospace !important;
+}
+
+.aero-page-host .state-step {
+  background: #0c0c0c !important;
+  border-color: #2a2a2a !important;
+  color: #cfcfcf !important;
+  border-radius: 0 !important;
+}
+
+.aero-page-host .state-step span {
+  background: #f5f5f5 !important;
+  box-shadow: none !important;
+}
+
+.aero-page-host .state-step.active,
+.aero-page-host .state-step.complete {
+  border-color: #f5f5f5 !important;
+  background: #171717 !important;
+}
+
+/* Command buttons */
+.aero-page-host .command-button {
+  border-color: #3a3a3a !important;
+  background: #0c0c0c !important;
+  color: #f5f5f5 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.aero-page-host .command-button.danger {
+  border-color: #696969 !important;
+  color: #f5f5f5 !important;
+}
+
+.aero-page-host .command-button.warning {
+  border-color: #696969 !important;
+  color: #cfcfcf !important;
+}
+
+.aero-page-host .command-button.active,
+.aero-page-host .command-lock.safe,
+.aero-page-host .command-lock.armed {
+  background: #f5f5f5 !important;
+  color: #050505 !important;
+  border-color: #f5f5f5 !important;
+  box-shadow: none !important;
+}
+
+/* Right column fit */
+.aero-page-host .orientation-panel {
+  flex: 0 0 94px !important;
+}
+
+.aero-page-host .quaternion-panel {
+  flex: 0 0 116px !important;
+}
+
+.aero-page-host .gps-panel {
+  flex: 0 0 170px !important;
+  min-height: 170px !important;
+}
+
+.aero-page-host .diagnostics-panel {
+  flex: 1 1 auto !important;
+  min-height: 112px !important;
+}
+
+.aero-page-host .gps-map {
+  height: 88px !important;
+  min-height: 88px !important;
+  border-color: #2a2a2a !important;
+  border-radius: 0 !important;
+  filter: grayscale(1) contrast(1.1) brightness(0.82);
+}
+
+.aero-page-host .rocket-viewport {
+  background: #050505 !important;
+  border-radius: 0 !important;
+}
+
+/* Chart monochrome cleanup */
+.mission-svg-chart,
+.aero-technical-chart {
+  background: #050505 !important;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.mission-svg-chart .chart-bg {
+  fill: #050505 !important;
+}
+
+.chart-grid-line {
+  stroke: rgba(255, 255, 255, 0.18) !important;
+  stroke-width: 1 !important;
+}
+
+.chart-grid-line.vertical {
+  stroke: rgba(255, 255, 255, 0.09) !important;
+}
+
+.chart-axis-label {
+  fill: rgba(245, 245, 245, 0.82) !important;
+  font-family: "JetBrains Mono", Consolas, monospace !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+
+.x-label {
+  fill: rgba(170, 170, 170, 0.82) !important;
+}
+
+.chart-area-fill {
+  fill: rgba(255, 255, 255, 0.10) !important;
+}
+
+.chart-main-line {
+  stroke: #f5f5f5 !important;
+}
+
+.chart-value-badge {
+  background: #101010 !important;
+  border-color: #3a3a3a !important;
+  color: #fff !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.chart-value-badge span {
+  color: #9a9a9a !important;
+}
+
+.chart-value-badge strong {
+  color: #f5f5f5 !important;
+}
+
+/* Engineering pages should also have white chart styling */
+.aero-chart-slot .mission-svg-chart {
+  background: #050505 !important;
+}
+
+/* Reduce chart label clutter in Mission Control */
+.aero-page-host .chart-axis-label {
+  font-size: 10px !important;
+}
+
+.aero-page-host .chart-value-badge {
+  min-width: 86px !important;
+  padding: 5px 7px !important;
+}
+
+/* Make the mission dashboard less oversized inside shell */
+.aero-page-host .telemetry-card-grid {
+  gap: 8px !important;
+}
+
+.aero-page-host .telemetry-card {
+  min-height: 58px !important;
+}
+
+.aero-page-host .wide-card {
+  min-height: 50px !important;
+}
+
+.aero-page-host .chart-grid-console {
+  gap: 8px !important;
+}
+
+.aero-page-host .square-chart .chart-body,
+.aero-page-host .acceleration-wide .chart-body {
+  padding: 8px !important;
+}
+
+/* If viewport is tight, shrink right rail and left rail further */
+@media (max-width: 1400px) {
+  .aero-shell {
+    grid-template-columns: 220px minmax(0, 1fr) !important;
+  }
+
+  .aero-page-host .mission-main {
+    grid-template-columns: 270px minmax(0, 1fr) 260px !important;
+  }
+
+  .aero-top-status div {
+    min-width: 82px !important;
+  }
+}
+
+@media (max-width: 1220px) {
+  .aero-page-host .mission-main {
+    grid-template-columns: 250px minmax(0, 1fr) 240px !important;
+  }
+
+  .aero-page-host .chart-axis-label {
+    font-size: 9px !important;
+  }
+}
+
+/* MILESTONE 5.2 MODAL + LEFTOVER COLOR CLEANUP */
+.confirm-overlay {
+  background: rgba(0, 0, 0, 0.82) !important;
+  backdrop-filter: blur(8px) grayscale(1) !important;
+}
+
+.confirm-modal {
+  width: min(560px, 92vw) !important;
+  border-radius: 0 !important;
+  padding: 24px !important;
+  background: #0b0b0b !important;
+  border: 1px solid #3a3a3a !important;
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.72) !important;
+}
+
+.confirm-modal.danger {
+  background: #0b0b0b !important;
+  border-color: #666 !important;
+}
+
+.confirm-kicker {
+  color: #bdbdbd !important;
+  font-family: "JetBrains Mono", Consolas, monospace !important;
+  font-size: 0.68rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.22em !important;
+}
+
+.confirm-modal.danger .confirm-kicker {
+  color: #f5f5f5 !important;
+}
+
+.confirm-modal h2 {
+  color: #ffffff !important;
+  font-family: Inter, system-ui, sans-serif !important;
+  font-size: 1.55rem !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+.confirm-modal p {
+  color: #cfcfcf !important;
+  font-size: 0.96rem !important;
+  line-height: 1.55 !important;
+}
+
+.confirm-actions button {
+  border-radius: 0 !important;
+  min-height: 40px !important;
+  padding: 9px 16px !important;
+  background: #111 !important;
+  color: #f5f5f5 !important;
+  border: 1px solid #3a3a3a !important;
+  box-shadow: none !important;
+}
+
+.confirm-cancel:hover {
+  border-color: #f5f5f5 !important;
+}
+
+.confirm-send,
+.confirm-danger {
+  background: #f5f5f5 !important;
+  color: #050505 !important;
+  border-color: #f5f5f5 !important;
+  box-shadow: none !important;
+}
+
+.confirm-danger:hover,
+.confirm-send:hover {
+  background: #ffffff !important;
+}
+
+/* Kill remaining cyan/blue dashboard accents inside shell */
+.aero-page-host * {
+  text-shadow: none !important;
+}
+
+.aero-page-host .panel,
+.aero-page-host .bottom-panel,
+.aero-page-host .telemetry-card,
+.aero-page-host .status-cell,
+.aero-page-host .command-button,
+.aero-page-host .current-state,
+.aero-page-host .state-step,
+.aero-page-host .chart-body,
+.aero-page-host .mission-svg-chart,
+.aero-page-host .rocket-viewport {
+  border-color: #2a2a2a !important;
+  box-shadow: none !important;
+}
+
+.aero-page-host .panel-header,
+.aero-page-host .bottom-header,
+.aero-page-host .command-panel .panel-header {
+  color: #f5f5f5 !important;
+  background: #151515 !important;
+  border-color: #2a2a2a !important;
+}
+
+.aero-page-host .chart-main-line {
+  stroke: #f5f5f5 !important;
+}
+
+.aero-page-host .chart-area-fill {
+  fill: rgba(255, 255, 255, 0.10) !important;
+}
+
+.aero-page-host .chart-grid-line {
+  stroke: rgba(255, 255, 255, 0.16) !important;
+}
+
+.aero-page-host .chart-value-badge {
+  border-color: #3a3a3a !important;
+  background: #101010 !important;
+}
+
+.aero-page-host .chart-value-badge span {
+  color: #9a9a9a !important;
+}
+
+.aero-page-host .chart-value-badge strong {
+  color: #f5f5f5 !important;
+}
+
+/* MILESTONE 5.3 READABLE CHARTS + ATTITUDE FIX */
+
+.aero-readable-chart {
+  display: grid;
+  grid-template-columns: 148px minmax(0, 1fr);
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  min-height: 170px;
+  background: #050505;
+  border: 1px solid #2a2a2a;
+  padding: 10px;
+}
+
+.chart-stat-rail {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+  min-width: 0;
+}
+
+.chart-stat-rail div {
+  display: grid;
+  align-content: center;
+  padding: 8px 10px;
+  border: 1px solid #2a2a2a;
+  background: #101010;
+}
+
+.chart-stat-rail span {
+  color: #9a9a9a;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.64rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+.chart-stat-rail strong {
+  margin-top: 5px;
+  color: #ffffff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.9rem;
+  line-height: 1.15;
+}
+
+.chart-plot-area {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid #2a2a2a;
+  background: #050505;
+  padding: 0;
+  overflow: hidden;
+}
+
+.chart-plot-area svg {
+  width: 100%;
+  height: calc(100% - 28px);
+  display: block;
+}
+
+.chart-y-label {
+  position: absolute;
+  left: 10px;
+  z-index: 2;
+  color: #f5f5f5;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.82rem;
+  font-weight: 900;
+  background: rgba(5, 5, 5, 0.82);
+  padding: 2px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chart-y-label em {
+  color: #9a9a9a;
+  font-size: 0.66rem;
+  font-style: normal;
+}
+
+.chart-y-label.top {
+  top: 8px;
+}
+
+.chart-y-label.mid {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.chart-y-label.bottom {
+  bottom: 34px;
+}
+
+.chart-x-axis {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border-top: 1px solid #2a2a2a;
+  background: #0b0b0b;
+}
+
+.chart-x-axis span {
+  color: #d8d8d8;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.chart-grid-line {
+  stroke: rgba(255, 255, 255, 0.18) !important;
+}
+
+.chart-grid-line.vertical {
+  stroke: rgba(255, 255, 255, 0.10) !important;
+}
+
+.chart-area-fill {
+  fill: rgba(255, 255, 255, 0.10) !important;
+}
+
+.chart-main-line {
+  stroke: #f5f5f5 !important;
+}
+
+/* Make charts taller enough for readable labels */
+.aero-page-host .chart-body {
+  min-height: 190px !important;
+}
+
+.aero-page-host .square-chart .chart-body {
+  min-height: 230px !important;
+}
+
+.aero-page-host .acceleration-wide .chart-body {
+  min-height: 210px !important;
+}
+
+.aero-chart-slot {
+  height: 330px !important;
+}
+
+.aero-chart-slot.small {
+  height: 260px !important;
+}
+
+.aero-chart-slot.analysis {
+  height: 360px !important;
+}
+
+/* Fix quaternion/attitude clipping */
+.aero-page-host .quaternion-panel {
+  flex: 0 0 190px !important;
+  min-height: 190px !important;
+  overflow: hidden !important;
+}
+
+.aero-page-host .quat-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  grid-auto-rows: minmax(54px, auto) !important;
+  gap: 7px !important;
+  padding: 9px !important;
+  overflow: visible !important;
+}
+
+.aero-page-host .quat-grid div {
+  min-height: 54px !important;
+  padding: 8px 9px !important;
+  display: grid !important;
+  align-content: center !important;
+}
+
+.aero-page-host .quat-grid span {
+  color: #9a9a9a !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.12em !important;
+}
+
+.aero-page-host .quat-grid strong {
+  color: #f5f5f5 !important;
+  font-size: 0.88rem !important;
+  margin-top: 4px !important;
+}
+
+/* Give right column more room now that attitude panel is readable */
+.aero-page-host .mission-main {
+  grid-template-columns: 292px minmax(0, 1fr) 330px !important;
+}
+
+.aero-page-host .orientation-panel {
+  flex: 0 0 96px !important;
+}
+
+.aero-page-host .gps-panel {
+  flex: 0 0 168px !important;
+  min-height: 168px !important;
+}
+
+.aero-page-host .diagnostics-panel {
+  flex: 1 1 auto !important;
+}
+
+/* Tighten left column a little to offset bigger right panel */
+.aero-page-host .left-column {
+  grid-template-rows: minmax(155px, 0.75fr) auto minmax(210px, 1fr) !important;
+}
+
+.aero-page-host .current-state {
+  font-size: 1.05rem !important;
+  padding: 8px !important;
+}
+
+.aero-page-host .state-step {
+  min-height: 24px !important;
+  padding: 4px 8px !important;
+}
+
+/* Remove old badge if any older CSS tries to show it */
+.chart-value-badge {
+  display: none !important;
+}
+
+/* Responsive fallback */
+@media (max-width: 1400px) {
+  .aero-readable-chart {
+    grid-template-columns: 132px minmax(0, 1fr);
+  }
+
+  .chart-stat-rail strong {
+    font-size: 0.78rem;
+  }
+
+  .aero-page-host .mission-main {
+    grid-template-columns: 270px minmax(0, 1fr) 310px !important;
+  }
+}
+
+/* MILESTONE 5.4 SMOOTHER + LESS CRAMPED MISSION CONTROL CHARTS */
+
+.aero-readable-chart.compact {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  min-height: 150px;
+  background: #050505;
+  border: 1px solid #2a2a2a;
+  padding: 8px;
+}
+
+.compact-chart-header {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  min-height: 38px;
+}
+
+.compact-stat {
+  min-width: 120px;
+  padding: 6px 10px;
+  border: 1px solid #2a2a2a;
+  background: #101010;
+}
+
+.compact-stat span {
+  color: #9a9a9a;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.compact-stat strong {
+  display: block;
+  margin-top: 3px;
+  color: #ffffff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.88rem;
+  line-height: 1.15;
+}
+
+.aero-readable-chart.compact .chart-plot-area {
+  height: calc(100% - 46px);
+}
+
+.aero-readable-chart.compact .chart-y-label {
+  font-size: 0.74rem;
+}
+
+.aero-readable-chart.compact .chart-y-label em {
+  font-size: 0.60rem;
+}
+
+.aero-readable-chart.compact .chart-x-axis span {
+  font-size: 0.72rem;
+}
+
+/* Make mission control plots feel roomier */
+.aero-page-host .square-chart .chart-body {
+  min-height: 250px !important;
+}
+
+.aero-page-host .acceleration-wide .chart-body {
+  min-height: 225px !important;
+}
+
+.aero-page-host .square-chart .panel-header,
+.aero-page-host .acceleration-wide .panel-header {
+  padding-bottom: 8px !important;
+}
+
+.aero-page-host .square-chart,
+.aero-page-host .acceleration-wide {
+  overflow: hidden !important;
+}
+
+/* Slightly reduce padding around chart panels */
+.aero-page-host .square-chart .chart-body,
+.aero-page-host .acceleration-wide .chart-body {
+  padding: 8px !important;
+}
+
+/* Keep detailed engineering charts untouched and roomy */
+.aero-readable-chart.detailed {
+  display: grid;
+  grid-template-columns: 148px minmax(0, 1fr);
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  min-height: 170px;
+  background: #050505;
+  border: 1px solid #2a2a2a;
+  padding: 10px;
+}
+
+@media (max-width: 1400px) {
+  .compact-stat {
+    min-width: 102px;
+    padding: 5px 8px;
+  }
+
+  .compact-stat strong {
+    font-size: 0.8rem;
+  }
+}
+
+/* MILESTONE 5.5 CLEAN LARGE CHARTS */
+
+.clean-flight-chart {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  display: grid;
+  grid-template-rows: 48px minmax(0, 1fr);
+  gap: 8px;
+  padding: 10px;
+  background: #050505;
+  border: 1px solid #2a2a2a;
+}
+
+.clean-flight-chart.compact {
+  min-height: 260px;
+}
+
+.clean-flight-chart.detailed {
+  min-height: 300px;
+}
+
+.clean-flight-chart.empty {
+  display: grid;
+  place-items: center;
+}
+
+.clean-chart-readouts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.clean-chart-readouts div {
+  display: grid;
+  align-content: center;
+  padding: 6px 10px;
+  background: #101010;
+  border: 1px solid #2a2a2a;
+}
+
+.clean-chart-readouts span {
+  color: #8f8f8f;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.clean-chart-readouts strong {
+  margin-top: 3px;
+  color: #ffffff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.95rem;
+  line-height: 1.1;
+}
+
+.clean-chart-main {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 8px;
+}
+
+.clean-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px 0 34px;
+}
+
+.clean-y-axis span {
+  color: #d8d8d8;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.clean-plot {
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid #2a2a2a;
+  background: #050505;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) 28px;
+}
+
+.clean-plot svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.clean-x-axis {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  border-top: 1px solid #2a2a2a;
+  background: #0b0b0b;
+}
+
+.clean-x-axis span {
+  color: #d8d8d8;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.clean-flight-chart .chart-bg {
+  fill: #050505;
+}
+
+.clean-flight-chart .chart-grid-line {
+  stroke: rgba(255, 255, 255, 0.18) !important;
+}
+
+.clean-flight-chart .chart-grid-line.vertical {
+  stroke: rgba(255, 255, 255, 0.09) !important;
+}
+
+.clean-flight-chart .chart-area-fill {
+  fill: rgba(255, 255, 255, 0.10) !important;
+}
+
+.clean-flight-chart .chart-main-line {
+  stroke: #f5f5f5 !important;
+}
+
+/* Mission Control layout: 2 big charts, not 3 cramped charts */
+.aero-page-host .chart-grid-console {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: minmax(290px, 1fr) minmax(290px, 1fr) !important;
+  gap: 10px !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  padding-right: 3px !important;
+}
+
+.aero-page-host .square-chart {
+  min-height: 300px !important;
+}
+
+.aero-page-host .square-chart .chart-body {
+  min-height: 260px !important;
+  height: auto !important;
+  padding: 10px !important;
+}
+
+.aero-page-host .acceleration-wide {
+  display: none !important;
+}
+
+/* Give the center page enough room */
+.aero-page-host .center-column {
+  display: grid !important;
+  grid-template-rows: auto minmax(0, 1fr) !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.aero-page-host .telemetry-card-grid {
+  gap: 8px !important;
+}
+
+.aero-page-host .telemetry-card {
+  min-height: 60px !important;
+}
+
+.aero-page-host .wide-card {
+  min-height: 50px !important;
+}
+
+@media (max-width: 1400px) {
+  .clean-chart-main {
+    grid-template-columns: 74px minmax(0, 1fr);
+  }
+
+  .clean-y-axis span {
+    font-size: 0.7rem;
+  }
+
+  .clean-chart-readouts strong {
+    font-size: 0.84rem;
+  }
+
+  .aero-page-host .chart-grid-console {
+    grid-template-rows: minmax(270px, 1fr) minmax(270px, 1fr) !important;
+  }
+}
+
+/* MILESTONE 5.7 FULL-SIZE OPERATIONAL CHARTS */
+
+.operator-chart {
+  width: 100%;
+  min-height: 340px;
+  display: grid;
+  grid-template-rows: 58px minmax(0, 1fr);
+  gap: 10px;
+  padding: 12px;
+  background: #050505;
+  border: 1px solid #2a2a2a;
+}
+
+.operator-chart.compact {
+  min-height: 340px;
+}
+
+.operator-chart.detailed {
+  min-height: 380px;
+}
+
+.operator-chart.empty {
+  display: grid;
+  place-items: center;
+}
+
+.operator-chart-readouts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.operator-chart-readouts div {
+  display: grid;
+  align-content: center;
+  padding: 8px 12px;
+  background: #101010;
+  border: 1px solid #2a2a2a;
+}
+
+.operator-chart-readouts span {
+  color: #9a9a9a;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+.operator-chart-readouts strong {
+  margin-top: 4px;
+  color: #ffffff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 1rem;
+  line-height: 1.1;
+}
+
+.operator-chart-body {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.operator-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4px 0 34px;
+}
+
+.operator-y-axis span {
+  color: #d8d8d8;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.82rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.operator-y-axis em {
+  color: #8f8f8f;
+  font-size: 0.68rem;
+  font-style: normal;
+}
+
+.operator-plot-shell {
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid #2a2a2a;
+  background: #050505;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) 32px;
+}
+
+.operator-plot-shell svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.operator-x-axis {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border-top: 1px solid #2a2a2a;
+  background: #0b0b0b;
+}
+
+.operator-x-axis span {
+  color: #d8d8d8;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.operator-chart .chart-bg {
+  fill: #050505;
+}
+
+.operator-chart .chart-grid-line {
+  stroke: rgba(255, 255, 255, 0.18) !important;
+}
+
+.operator-chart .chart-grid-line.vertical {
+  stroke: rgba(255, 255, 255, 0.09) !important;
+}
+
+.operator-chart .chart-area-fill {
+  fill: rgba(255, 255, 255, 0.10) !important;
+}
+
+.operator-chart .chart-main-line {
+  stroke: #f5f5f5 !important;
+}
+
+/* Mission Control is now a scrollable operator page with 3 serious charts */
+.aero-page-host .mission-main {
+  grid-template-columns: 300px minmax(700px, 1fr) 330px !important;
+  gap: 10px !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.aero-page-host .center-column {
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding-right: 8px !important;
+  display: grid !important;
+  grid-template-rows: auto minmax(0, auto) !important;
+  align-content: start !important;
+  gap: 10px !important;
+}
+
+.aero-page-host .chart-grid-console {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: none !important;
+  grid-auto-rows: auto !important;
+  gap: 14px !important;
+  min-height: auto !important;
+  overflow: visible !important;
+  padding-right: 0 !important;
+}
+
+.aero-page-host .square-chart,
+.aero-page-host .acceleration-wide {
+  display: block !important;
+  min-height: 410px !important;
+  overflow: visible !important;
+}
+
+.aero-page-host .square-chart .chart-body,
+.aero-page-host .acceleration-wide .chart-body {
+  min-height: 360px !important;
+  height: auto !important;
+  padding: 12px !important;
+}
+
+.aero-page-host .telemetry-card-grid {
+  gap: 8px !important;
+}
+
+.aero-page-host .telemetry-card {
+  min-height: 62px !important;
+}
+
+/* Left and right stay usable while center scrolls */
+.aero-page-host .left-column,
+.aero-page-host .right-column {
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.aero-page-host .right-column {
+  padding-right: 4px !important;
+}
+
+/* Scrollbars, because serious charts need real space */
+.aero-page-host .center-column::-webkit-scrollbar,
+.aero-page-host .left-column::-webkit-scrollbar,
+.aero-page-host .right-column::-webkit-scrollbar {
+  width: 8px;
+}
+
+.aero-page-host .center-column::-webkit-scrollbar-thumb,
+.aero-page-host .left-column::-webkit-scrollbar-thumb,
+.aero-page-host .right-column::-webkit-scrollbar-thumb {
+  background: #3a3a3a;
+}
+
+.aero-page-host .center-column::-webkit-scrollbar-track,
+.aero-page-host .left-column::-webkit-scrollbar-track,
+.aero-page-host .right-column::-webkit-scrollbar-track {
+  background: #090909;
+}
+
+/* Kill older chart renderers visually if any classes remain */
+.aero-readable-chart,
+.clean-flight-chart {
+  display: none !important;
+}
+
+@media (max-width: 1450px) {
+  .aero-page-host .mission-main {
+    grid-template-columns: 285px minmax(640px, 1fr) 310px !important;
+  }
+
+  .operator-chart-readouts strong {
+    font-size: 0.9rem;
+  }
+
+  .operator-chart-body {
+    grid-template-columns: 86px minmax(0, 1fr);
+  }
+
+  .operator-y-axis span {
+    font-size: 0.74rem;
+  }
+}
+
+/* MILESTONE 5.8 REAL MISSION CONTROL LAYOUT RESET */
+
+/* The app workspace itself should scroll. Stop trapping Mission Control inside fixed-height columns. */
+.aero-workspace {
+  min-height: 100vh !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+}
+
+.aero-content {
+  min-height: 0 !important;
+  height: 100% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 12px !important;
+}
+
+/* Mission page should be a real page, not a clipped viewport */
+.aero-page-host,
+.aero-page-host.active {
+  height: auto !important;
+  min-height: 100% !important;
+  overflow: visible !important;
+}
+
+.aero-page-host .mission-shell {
+  display: block !important;
+  height: auto !important;
+  min-height: auto !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+/* We hide the old dashboard topbar because the aerospace shell already has a topbar */
+.aero-page-host .mission-topbar {
+  display: none !important;
+}
+
+/* Main mission layout: three columns, but the page itself scrolls */
+.aero-page-host .mission-main {
+  display: grid !important;
+  grid-template-columns: 300px minmax(760px, 1fr) 330px !important;
+  align-items: start !important;
+  gap: 10px !important;
+  height: auto !important;
+  min-height: auto !important;
+  overflow: visible !important;
+}
+
+/* No internal scroll traps */
+.aero-page-host .mission-column,
+.aero-page-host .left-column,
+.aero-page-host .center-column,
+.aero-page-host .right-column {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  padding-right: 0 !important;
+}
+
+/* Keep side columns readable */
+.aero-page-host .left-column,
+.aero-page-host .right-column {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+/* Center column becomes a normal vertical document */
+.aero-page-host .center-column {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+/* Chart stack: three full-width readable charts */
+.aero-page-host .chart-grid-console {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  height: auto !important;
+  min-height: auto !important;
+  overflow: visible !important;
+}
+
+/* Bring back all three charts, including acceleration */
+.aero-page-host .square-chart,
+.aero-page-host .acceleration-wide {
+  display: block !important;
+  height: auto !important;
+  min-height: auto !important;
+  overflow: visible !important;
+}
+
+.aero-page-host .square-chart .chart-body,
+.aero-page-host .acceleration-wide .chart-body {
+  height: auto !important;
+  min-height: 360px !important;
+  padding: 12px !important;
+}
+
+/* Each operator chart should have real height */
+.aero-page-host .operator-chart {
+  min-height: 340px !important;
+  height: 340px !important;
+}
+
+/* Restore bottom panels below the main area */
+.aero-page-host .mission-bottom {
+  display: grid !important;
+  grid-template-columns: 1.2fr 0.8fr !important;
+  gap: 10px !important;
+  margin-top: 10px !important;
+  height: 180px !important;
+  min-height: 180px !important;
+  overflow: hidden !important;
+}
+
+/* Flight state timeline should not stretch absurdly */
+.aero-page-host .timeline-panel {
+  flex: none !important;
+}
+
+.aero-page-host .timeline-panel .panel-body {
+  max-height: none !important;
+}
+
+.aero-page-host .current-state {
+  min-height: 44px !important;
+}
+
+/* Command panel visible without forcing whole left column tall */
+.aero-page-host .command-panel {
+  min-height: 230px !important;
+}
+
+.aero-page-host .command-panel .panel-body {
+  overflow: visible !important;
+}
+
+/* Right column panels normal height */
+.aero-page-host .orientation-panel,
+.aero-page-host .quaternion-panel,
+.aero-page-host .gps-panel,
+.aero-page-host .diagnostics-panel {
+  flex: none !important;
+  height: auto !important;
+  min-height: auto !important;
+}
+
+/* Make attitude panel fully visible */
+.aero-page-host .quaternion-panel {
+  min-height: 200px !important;
+}
+
+.aero-page-host .quat-grid {
+  overflow: visible !important;
+}
+
+/* Make GPS/map visible */
+.aero-page-host .gps-map {
+  height: 110px !important;
+  min-height: 110px !important;
+}
+
+/* Aerospace content scrollbar */
+.aero-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.aero-content::-webkit-scrollbar-thumb {
+  background: #3a3a3a;
+}
+
+.aero-content::-webkit-scrollbar-track {
+  background: #090909;
+}
+
+/* Responsive: at smaller widths, reduce side rails but keep charts usable */
+@media (max-width: 1450px) {
+  .aero-page-host .mission-main {
+    grid-template-columns: 280px minmax(680px, 1fr) 305px !important;
+  }
+}
+
+@media (max-width: 1280px) {
+  .aero-page-host .mission-main {
+    grid-template-columns: 260px minmax(620px, 1fr) 290px !important;
+  }
+
+  .aero-page-host .operator-chart {
+    height: 320px !important;
+    min-height: 320px !important;
+  }
+}
+
+/* MILESTONE 5.9 RIGHT COLUMN VISIBILITY FIX */
+
+/* The right column was getting pushed outside the viewport by an oversized center min-width. */
+.aero-page-host .mission-main {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: grid !important;
+  grid-template-columns: 285px minmax(0, 1fr) 315px !important;
+  gap: 10px !important;
+  overflow: visible !important;
+}
+
+/* Make sure each grid child is allowed to shrink instead of forcing overflow. */
+.aero-page-host .left-column,
+.aero-page-host .center-column,
+.aero-page-host .right-column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+/* Right rail should be fully visible and clean. */
+.aero-page-host .right-column {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  overflow: visible !important;
+  padding-right: 0 !important;
+}
+
+.aero-page-host .right-column .panel {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+/* Slightly reduce side panel padding so right rail content fits. */
+.aero-page-host .right-column .panel-header {
+  padding: 8px 10px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* 3D view fit */
+.aero-page-host .orientation-panel {
+  min-height: 112px !important;
+}
+
+.aero-page-host .rocket-viewport {
+  min-height: 78px !important;
+  padding: 8px !important;
+}
+
+/* Quaternion panel fit */
+.aero-page-host .quaternion-panel {
+  min-height: 210px !important;
+}
+
+.aero-page-host .quat-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  padding: 8px !important;
+}
+
+.aero-page-host .quat-grid div {
+  min-width: 0 !important;
+  min-height: 58px !important;
+  padding: 8px !important;
+}
+
+.aero-page-host .quat-grid span {
+  font-size: 0.62rem !important;
+}
+
+.aero-page-host .quat-grid strong {
+  font-size: 0.82rem !important;
+  word-break: keep-all !important;
+}
+
+/* GPS panel fit */
+.aero-page-host .gps-panel {
+  min-height: 215px !important;
+}
+
+.aero-page-host .gps-lines {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+}
+
+.aero-page-host .gps-lines div {
+  min-width: 0 !important;
+  padding: 8px !important;
+}
+
+.aero-page-host .gps-lines span {
+  font-size: 0.58rem !important;
+}
+
+.aero-page-host .gps-lines strong {
+  font-size: 0.72rem !important;
+}
+
+.aero-page-host .gps-map {
+  width: 100% !important;
+  height: 118px !important;
+  min-height: 118px !important;
+}
+
+/* Diagnostics fit */
+.aero-page-host .diagnostics-panel {
+  min-height: 170px !important;
+}
+
+.aero-page-host .diagnostic-list {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  padding: 8px !important;
+}
+
+.aero-page-host .diagnostic-list div {
+  min-width: 0 !important;
+  padding: 8px !important;
+}
+
+.aero-page-host .diagnostic-list span {
+  font-size: 0.58rem !important;
+}
+
+.aero-page-host .diagnostic-list strong {
+  font-size: 0.72rem !important;
+}
+
+/* Let the center charts remain readable, but not force the right rail offscreen. */
+.aero-page-host .center-column {
+  min-width: 0 !important;
+}
+
+.aero-page-host .operator-chart-body {
+  grid-template-columns: 82px minmax(0, 1fr) !important;
+}
+
+.aero-page-host .operator-y-axis span {
+  font-size: 0.74rem !important;
+}
+
+/* Fit better on common laptop widths. */
+@media (max-width: 1450px) {
+  .aero-shell {
+    grid-template-columns: 220px minmax(0, 1fr) !important;
+  }
+
+  .aero-page-host .mission-main {
+    grid-template-columns: 260px minmax(0, 1fr) 300px !important;
+    gap: 8px !important;
+  }
+
+  .aero-page-host .operator-chart-body {
+    grid-template-columns: 74px minmax(0, 1fr) !important;
+  }
+
+  .aero-page-host .operator-chart-readouts strong {
+    font-size: 0.88rem !important;
+  }
+}
+
+@media (max-width: 1280px) {
+  .aero-page-host .mission-main {
+    grid-template-columns: 245px minmax(0, 1fr) 285px !important;
+  }
+
+  .aero-page-host .right-column .panel-header {
+    font-size: 0.68rem !important;
+  }
+}
+
+/* MILESTONE 5.10 NUMERICAL ENGINEERING CHARTS */
+
+.numeric-engineering-chart {
+  width: 100%;
+  min-height: 400px;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 8px;
+  padding: 12px;
+  background: #050505;
+  border: 1px solid #2a2a2a;
+}
+
+.numeric-engineering-chart.compact {
+  min-height: 400px;
+}
+
+.numeric-engineering-chart.detailed {
+  min-height: 430px;
+}
+
+.numeric-engineering-chart.empty {
+  display: grid;
+  place-items: center;
+}
+
+.numeric-chart-top {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.numeric-chart-top div {
+  min-width: 0;
+  display: grid;
+  align-content: center;
+  padding: 8px 10px;
+  background: #101010;
+  border: 1px solid #2a2a2a;
+}
+
+.numeric-chart-top span {
+  color: #9a9a9a;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.60rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.numeric-chart-top strong {
+  margin-top: 4px;
+  color: #ffffff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.88rem;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.numeric-chart-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 30px;
+  padding: 0 2px;
+}
+
+.numeric-chart-meta span {
+  color: #bdbdbd;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.numeric-chart-body {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 98px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.numeric-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px 0 38px;
+}
+
+.numeric-y-axis span {
+  color: #e5e5e5;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.82rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.numeric-y-axis em {
+  color: #8f8f8f;
+  font-size: 0.66rem;
+  font-style: normal;
+}
+
+.numeric-plot-shell {
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid #2a2a2a;
+  background: #050505;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) 34px;
+}
+
+.numeric-plot-shell svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.numeric-x-axis {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+  border-top: 1px solid #2a2a2a;
+  background: #0b0b0b;
+}
+
+.numeric-x-axis span {
+  color: #d8d8d8;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.numeric-engineering-chart .chart-bg {
+  fill: #050505;
+}
+
+.numeric-engineering-chart .chart-grid-line {
+  stroke: rgba(255, 255, 255, 0.18) !important;
+}
+
+.numeric-engineering-chart .chart-grid-line.vertical {
+  stroke: rgba(255, 255, 255, 0.09) !important;
+}
+
+.numeric-engineering-chart .chart-zero-line {
+  stroke: rgba(255, 255, 255, 0.42);
+  stroke-width: 2;
+  stroke-dasharray: 8 8;
+}
+
+.numeric-engineering-chart .chart-area-fill {
+  fill: rgba(255, 255, 255, 0.10) !important;
+}
+
+.numeric-engineering-chart .chart-main-line {
+  stroke: #f5f5f5 !important;
+}
+
+/* Mission Control chart cards get proper height for the numerical chart */
+.aero-page-host .square-chart,
+.aero-page-host .acceleration-wide {
+  min-height: 470px !important;
+}
+
+.aero-page-host .square-chart .chart-body,
+.aero-page-host .acceleration-wide .chart-body {
+  min-height: 420px !important;
+  padding: 12px !important;
+}
+
+/* Engineering page chart slots also become more useful */
+.aero-chart-slot {
+  height: 460px !important;
+}
+
+.aero-chart-slot.small {
+  height: 420px !important;
+}
+
+.aero-chart-slot.analysis {
+  height: 460px !important;
+}
+
+/* Old chart class cleanup */
+.operator-chart,
+.clean-flight-chart,
+.aero-readable-chart {
+  display: none !important;
+}
+
+@media (max-width: 1450px) {
+  .numeric-chart-top {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .numeric-chart-meta {
+    flex-wrap: wrap;
+  }
+
+  .numeric-chart-body {
+    grid-template-columns: 86px minmax(0, 1fr);
+  }
+
+  .numeric-y-axis span {
+    font-size: 0.74rem;
+  }
+
+  .numeric-x-axis span {
+    font-size: 0.66rem;
+  }
+
+  .numeric-engineering-chart {
+    min-height: 440px;
+  }
+
+  .aero-page-host .square-chart,
+  .aero-page-host .acceleration-wide {
+    min-height: 500px !important;
+  }
+
+  .aero-page-host .square-chart .chart-body,
+  .aero-page-host .acceleration-wide .chart-body {
+    min-height: 450px !important;
+  }
+}
+
+/* MILESTONE 6.1 STABLE OPERATOR CHARTS */
+
+.op-chart {
+  width: 100%;
+  min-height: 520px;
+  display: grid;
+  grid-template-rows: auto auto auto minmax(0, 1fr);
+  gap: 10px;
+  padding: 14px;
+  background: #050505;
+  border: 1px solid #2a2a2a;
+}
+
+.op-empty {
+  display: grid;
+  place-items: center;
+  color: #9a9a9a;
+  font-family: "JetBrains Mono", Consolas, monospace;
+}
+
+.op-chart-title {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #2a2a2a;
+  padding-bottom: 10px;
+}
+
+.op-chart-title span,
+.op-chart-title em {
+  color: #8f8f8f;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  font-style: normal;
+}
+
+.op-chart-title strong {
+  display: block;
+  margin-top: 4px;
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.op-chart-stats {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.op-chart-stats div {
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid #2a2a2a;
+  background: #101010;
+}
+
+.op-chart-stats span {
+  color: #8f8f8f;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.op-chart-stats strong {
+  display: block;
+  margin-top: 4px;
+  color: #fff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.82rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.op-chart-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #bdbdbd;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.op-chart-body {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.op-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px 0 40px;
+}
+
+.op-y-axis span {
+  color: #e5e5e5;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.op-y-axis em {
+  color: #8f8f8f;
+  font-size: 0.62rem;
+  font-style: normal;
+}
+
+.op-plot {
+  min-width: 0;
+  border: 1px solid #2a2a2a;
+  background: #050505;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) 34px;
+}
+
+.op-plot svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.op-bg {
+  fill: #050505;
+}
+
+.op-grid {
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 1;
+}
+
+.op-grid-vertical {
+  stroke: rgba(255, 255, 255, 0.09);
+}
+
+.op-zero {
+  stroke: rgba(255, 255, 255, 0.48);
+  stroke-width: 2;
+  stroke-dasharray: 10 8;
+}
+
+.op-area {
+  fill: rgba(255, 255, 255, 0.10);
+}
+
+.op-line {
+  fill: none;
+  stroke: #f5f5f5;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.op-last-dot {
+  fill: #f5f5f5;
+  stroke: #050505;
+  stroke-width: 2;
+}
+
+.op-x-axis {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+  border-top: 1px solid #2a2a2a;
+  background: #0b0b0b;
+}
+
+.op-x-axis span {
+  color: #d8d8d8;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* Mission Control chart layout using isolated chart component */
+.aero-page-host .chart-grid-console {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  overflow: visible !important;
+}
+
+.aero-page-host .square-chart,
+.aero-page-host .acceleration-wide {
+  display: block !important;
+  min-height: 590px !important;
+  overflow: visible !important;
+}
+
+.aero-page-host .square-chart .chart-body,
+.aero-page-host .acceleration-wide .chart-body {
+  min-height: 540px !important;
+  padding: 12px !important;
+}
+
+/* Hide older chart implementations if stale CSS survives */
+.aero-page-host .operator-chart,
+.aero-page-host .numeric-engineering-chart,
+.aero-page-host .clean-flight-chart,
+.aero-page-host .aero-readable-chart {
+  display: none !important;
+}
+
+/* Attitude visual clarity */
+.aero-page-host .rocket-viewport {
+  position: relative;
+}
+
+.aero-page-host .rocket-viewport::after {
+  content: "ATTITUDE VISUAL: PITCH / ROLL";
+  position: absolute;
+  left: 10px;
+  bottom: 8px;
+  color: #8f8f8f;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 1450px) {
+  .op-chart-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .op-chart {
+    min-height: 570px;
+  }
+
+  .aero-page-host .square-chart,
+  .aero-page-host .acceleration-wide {
+    min-height: 640px !important;
+  }
+
+  .aero-page-host .square-chart .chart-body,
+  .aero-page-host .acceleration-wide .chart-body {
+    min-height: 590px !important;
+  }
+}
+
+/* MILESTONE 6.4 EXPORT BUTTON THEME FIX */
+.aero-page-host .export-button,
+.aero-page-host a.export-button,
+.export-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 34px !important;
+  padding: 0 14px !important;
+  border: 1px solid #3a3a3a !important;
+  background: #101010 !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-family: "JetBrains Mono", Consolas, monospace !important;
+  font-size: 0.72rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+.aero-page-host .export-button:hover,
+.aero-page-host a.export-button:hover,
+.export-button:hover {
+  background: #ffffff !important;
+  color: #050505 !important;
+  text-decoration: none !important;
+}
+
+/* MILESTONE 7.1 FLIGHT ANALYSIS POLISH */
+
+.analysis-page {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.analysis-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.analysis-hero-status {
+  min-width: 190px;
+  padding: 12px 16px;
+  border: 1px solid #3a3a3a;
+  background: #101010;
+}
+
+.analysis-hero-status span {
+  display: block;
+  color: #9a9a9a;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.64rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.analysis-hero-status strong {
+  display: block;
+  margin-top: 6px;
+  color: #fff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 1rem;
+}
+
+.analysis-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.analysis-metric-card {
+  position: relative;
+  min-height: 96px;
+  padding: 14px;
+  border: 1px solid #2a2a2a;
+  background: #101010;
+}
+
+.analysis-metric-card span {
+  display: block;
+  max-width: 70%;
+  color: #9a9a9a;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.analysis-metric-card strong {
+  display: block;
+  margin-top: 18px;
+  color: #ffffff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.analysis-metric-card em {
+  color: #bdbdbd;
+  font-size: 0.72rem;
+  font-style: normal;
+}
+
+.analysis-metric-card .aero-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.analysis-main-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(360px, 0.75fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.analysis-panel {
+  border: 1px solid #2a2a2a;
+  background: #101010;
+}
+
+.analysis-panel > header {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.analysis-panel > header span {
+  color: #8f8f8f;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+}
+
+.analysis-panel > header h3 {
+  margin: 4px 0 0;
+  color: #fff;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.analysis-chart-panel .op-chart {
+  border: 0;
+  min-height: 540px;
+}
+
+.analysis-transition-table {
+  padding: 10px;
+}
+
+.analysis-transition-row,
+.analysis-empty-row {
+  min-height: 46px;
+  display: grid;
+  grid-template-columns: 100px 80px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 10px 8px;
+  border-bottom: 1px solid #252525;
+  color: #ffffff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+}
+
+.analysis-transition-row:last-child {
+  border-bottom: 0;
+}
+
+.analysis-transition-row span {
+  color: #bdbdbd;
+  font-size: 0.72rem;
+}
+
+.analysis-transition-row strong {
+  color: #ffffff;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.analysis-transition-row p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 0.76rem;
+}
+
+.analysis-empty-row {
+  grid-template-columns: 1fr;
+  color: #9a9a9a;
+}
+
+@media (max-width: 1450px) {
+  .analysis-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .analysis-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* MILESTONE 7.3 ENGINEERING TELEMETRY POLISH */
+
+.engineering-page {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.engineering-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.engineering-timebox {
+  min-width: 190px;
+  padding: 12px 16px;
+  border: 1px solid #3a3a3a;
+  background: #101010;
+}
+
+.engineering-timebox span {
+  display: block;
+  color: #9a9a9a;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.engineering-timebox strong {
+  display: block;
+  margin-top: 6px;
+  color: #ffffff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 1rem;
+}
+
+.engineering-matrix-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+.engineering-layout {
+  grid-template-columns: minmax(0, 1.35fr) minmax(360px, 0.75fr) !important;
+  align-items: start;
+}
+
+.engineering-channel-table {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.engineering-channel-table div {
+  min-height: 54px;
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) minmax(130px, auto) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #252525;
+}
+
+.engineering-channel-table div:nth-child(odd) {
+  border-right: 1px solid #252525;
+}
+
+.engineering-channel-table span,
+.attitude-table span,
+.integrity-table span,
+.gps-engineering-table span {
+  color: #9a9a9a;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.engineering-channel-table strong,
+.attitude-table strong,
+.integrity-table strong,
+.gps-engineering-table strong {
+  color: #ffffff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.84rem;
+  white-space: nowrap;
+}
+
+.engineering-chart-panel .op-chart {
+  border: 0;
+  min-height: 470px;
+}
+
+.engineering-chart-panel .op-chart-stats {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.engineering-small-chart {
+  height: 330px !important;
+}
+
+.engineering-small-chart .numeric-engineering-chart {
+  min-height: 315px !important;
+}
+
+@media (max-width: 1450px) {
+  .engineering-matrix-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .engineering-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .engineering-channel-table {
+    grid-template-columns: 1fr;
+  }
+
+  .engineering-channel-table div:nth-child(odd) {
+    border-right: 0;
+  }
+}
+
+/* MILESTONE 8.1 SYSTEM LOGS POLISH */
+
+.logs-page {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.logs-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logs-status-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(90px, 1fr));
+  gap: 8px;
+}
+
+.logs-status-strip div,
+.logs-summary-card {
+  position: relative;
+  padding: 12px 14px;
+  border: 1px solid #2d2d2d;
+  background: #101010;
+}
+
+.logs-status-strip span,
+.logs-summary-card span {
+  display: block;
+  color: #9a9a9a;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.logs-status-strip strong,
+.logs-summary-card strong {
+  display: block;
+  margin-top: 6px;
+  color: #ffffff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 1rem;
+}
+
+.logs-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.logs-summary-card strong {
+  font-size: 1.35rem;
+}
+
+.logs-summary-card em {
+  color: #bdbdbd;
+  font-size: 0.72rem;
+  font-style: normal;
+}
+
+.logs-summary-card .aero-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.logs-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(360px, 0.75fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.logs-panel {
+  border: 1px solid #2a2a2a;
+  background: #101010;
+}
+
+.logs-panel > header {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.logs-panel > header span {
+  color: #8f8f8f;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+}
+
+.logs-panel > header h3 {
+  margin: 4px 0 0;
+  color: #ffffff;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.terminal-log-table {
+  max-height: 620px;
+  overflow-y: auto;
+  font-family: "JetBrains Mono", Consolas, monospace;
+}
+
+.terminal-log-header,
+.terminal-log-row {
+  display: grid;
+  grid-template-columns: 110px 74px 86px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
+.terminal-log-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  min-height: 42px;
+  padding: 0 14px;
+  border-bottom: 1px solid #2a2a2a;
+  background: #151515;
+  color: #9a9a9a;
+  font-size: 0.64rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.terminal-log-row {
+  min-height: 46px;
+  padding: 8px 14px;
+  border-bottom: 1px solid #242424;
+  color: #ffffff;
+}
+
+.terminal-log-row span {
+  color: #cfcfcf;
+  font-size: 0.72rem;
+}
+
+.terminal-log-row strong,
+.terminal-log-row em {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  border: 1px solid #3a3a3a;
+  background: #070707;
+  color: #ffffff;
+  font-size: 0.66rem;
+  font-style: normal;
+  letter-spacing: 0.12em;
+}
+
+.terminal-log-row p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.terminal-log-row.level-danger em,
+.terminal-log-row.level-warn em {
+  border-color: #8f5f00;
+  color: #ffd166;
+}
+
+.terminal-log-row.level-state em,
+.terminal-log-row.level-action em {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.terminal-log-empty {
+  padding: 20px;
+  color: #9a9a9a;
+  font-family: "JetBrains Mono", Consolas, monospace;
+}
+
+.warning-console {
+  min-height: 220px;
+  padding: 12px;
+}
+
+.warning-empty {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  border: 1px solid #2a2a2a;
+  background: #090909;
+}
+
+.warning-empty strong {
+  color: #ffffff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  letter-spacing: 0.14em;
+}
+
+.warning-empty span {
+  color: #9a9a9a;
+}
+
+.warning-row {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 12px;
+  min-height: 44px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #3a2b10;
+  background: #130f08;
+  color: #ffd166;
+  font-family: "JetBrains Mono", Consolas, monospace;
+}
+
+.warning-row + .warning-row {
+  margin-top: 8px;
+}
+
+.warning-row span {
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.warning-row p {
+  margin: 0;
+  font-size: 0.76rem;
+}
+
+@media (max-width: 1450px) {
+  .logs-status-strip,
+  .logs-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .logs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* MILESTONE 8.2 MISSION CONFIG CLEANUP */
+
+.config-page {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.config-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.config-status-box {
+  min-width: 230px;
+  padding: 12px 16px;
+  border: 1px solid #3a3a3a;
+  background: #101010;
+}
+
+.config-status-box span,
+.config-card span,
+.config-panel header span,
+.truth-row span {
+  color: #9a9a9a;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.config-status-box strong {
+  display: block;
+  margin-top: 6px;
+  color: #ffffff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.95rem;
+}
+
+.config-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.config-card {
+  position: relative;
+  min-height: 96px;
+  padding: 14px;
+  border: 1px solid #2a2a2a;
+  background: #101010;
+}
+
+.config-card strong {
+  display: block;
+  margin-top: 18px;
+  color: #ffffff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 1.08rem;
+}
+
+.config-card em {
+  color: #bdbdbd;
+  font-size: 0.72rem;
+  font-style: normal;
+}
+
+.config-card .aero-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.config-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.75fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.config-panel {
+  border: 1px solid #2a2a2a;
+  background: #101010;
+}
+
+.config-panel header {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.config-panel header h3 {
+  margin: 4px 0 0;
+  color: #ffffff;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.config-table div {
+  min-height: 52px;
+  display: grid;
+  grid-template-columns: minmax(190px, 0.7fr) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #252525;
+}
+
+.config-table div:last-child {
+  border-bottom: 0;
+}
+
+.config-table span {
+  color: #9a9a9a;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.config-table strong {
+  color: #ffffff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.78rem;
+  word-break: break-word;
+}
+
+.truth-table {
+  padding: 0;
+}
+
+.truth-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.7fr) minmax(180px, 0.7fr) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 54px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #252525;
+}
+
+.truth-row:last-child {
+  border-bottom: 0;
+}
+
+.truth-head {
+  min-height: 42px;
+  background: #151515;
+}
+
+.truth-head span {
+  color: #cfcfcf;
+}
+
+.truth-row strong {
+  color: #ffffff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.78rem;
+}
+
+.truth-row p {
+  margin: 0;
+  color: #cfcfcf;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.config-state-strip {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  padding: 14px;
+}
+
+.config-state-strip div {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #2a2a2a;
+  background: #070707;
+  color: #ffffff;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.config-state-strip span {
+  color: #9a9a9a;
+}
+
+@media (max-width: 1450px) {
+  .config-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .config-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .truth-row {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .config-state-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
