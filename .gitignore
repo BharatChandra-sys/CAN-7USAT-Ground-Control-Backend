@@ -1,4 +1,9 @@
-# ── Python ──
+# ═══════════════════════════════════════════════════════
+#  GARI GCS — CAN-7USAT Ground Control Station
+#  .gitignore
+# ═══════════════════════════════════════════════════════
+
+# ── Python ──────────────────────────────────────────────
 __pycache__/
 *.py[cod]
 *.so
@@ -10,79 +15,90 @@ build/
 .Python
 MANIFEST
 
-# ── Virtual Environment ──
+# ── Virtual Environment ──────────────────────────────────
 venv/
 env/
 ENV/
 .venv/
 
-# ── Node / Frontend ──
+# ── Node / Frontend ─────────────────────────────────────
 node_modules/
 frontend/dist/
 frontend/build/
 .vite/
 .cache/
+
+# ── Logs ────────────────────────────────────────────────
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-# ── Environment / Secrets ──
+# ── Environment / Secrets ───────────────────────────────
 .env
 .env.local
 .env.*.local
 backend/.env
+# Keep examples
+!backend/.env.example
+!frontend/.env.rocket
 
-# ── IDEs ──
+# ── IDEs ────────────────────────────────────────────────
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
+.sixth/
 
-# ── OS ──
+# ── OS ──────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# ── Testing / Coverage ──
+# ── Testing / Coverage ──────────────────────────────────
 .pytest_cache/
 .coverage
 htmlcov/
 .tox/
 .hypothesis/
+coverage/
+*.lcov
 
-# ── Database ──
+# ── Database ────────────────────────────────────────────
 *.db
 *.sqlite
 *.sqlite3
 
-# ── Temp / Build artifacts ──
+# ── Temp / Build artifacts ──────────────────────────────
 *.tmp
 *.bak
+temp_frontend/
 
-# ── Project-specific large files ──
+# ── Project-specific large binary files ─────────────────
 rckt_kushinagar.csv
 rckt_inspace.ork
-*.pdf
 
-# ── Screenshots / raw images (keep docs/images) ──
+# ── PDFs (keep in docs/ only) ───────────────────────────
+*.pdf
+!docs/*.pdf
+
+# ── Screenshots / raw images (keep docs/images) ─────────
 Screenshot*.png
 Screenshot*.jpg
+Screenshot*.PNG
+Screenshot*.JPG
 
-# ── Extra markdown docs (not needed in repo) ──
+# ── Keep these tracked ──────────────────────────────────
+!docs/images/*.png
+!docs/images/*.jpg
+!docs/images/*.svg
+!README.md
+!LICENSE
+
+# ── Extra generated markdown (not needed in repo) ───────
 SETUP_STATUS.md
 BACKEND_COMPLETE.md
 SYSTEM_UPGRADES.md
 FINAL_STATUS.md
-OPTIMAL_STACK_ANALYSIS.md
-GETTING_STARTED.md
-PROJECT_OVERVIEW.md
-COMPONENT_BREAKDOWN.md
-UI_SPECIFICATION.md
-
-# ── Keep these ──
-!docs/images/*.png
-!docs/images/*.jpg
-!README.md
-!LICENSE
-!backend/.env.example

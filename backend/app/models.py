@@ -49,7 +49,12 @@ class TelemetryPacket(BaseModel):
     gps_lon: float
     checksum_xor: int = Field(..., ge=0, le=255)
     received_at: Optional[datetime] = None
-    
+    # Extended fields
+    temperature_c: float = 25.0
+    pressure_pa: float = 101325.0
+    battery_pct: float = 100.0
+    signal_dbm: float = -70.0
+
     def to_dict(self) -> dict:
         return {
             "sync_byte": self.sync_byte,
@@ -65,7 +70,11 @@ class TelemetryPacket(BaseModel):
             "gps_lat": self.gps_lat,
             "gps_lon": self.gps_lon,
             "checksum_xor": self.checksum_xor,
-            "received_at": self.received_at.isoformat() if self.received_at else None
+            "received_at": self.received_at.isoformat() if self.received_at else None,
+            "temperature_c": self.temperature_c,
+            "pressure_pa": self.pressure_pa,
+            "battery_pct": self.battery_pct,
+            "signal_dbm": self.signal_dbm,
         }
 
 
